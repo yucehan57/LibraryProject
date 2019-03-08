@@ -2,6 +2,18 @@
 
 {% block content %}
   {% for book in book_list %}
-    <p>title: {{book.title}}</p>
+  <table>
+    <tr>
+      <p>{{book.title}} by <strong>{{book.author}}</strong> </p>
+    </tr>
+    <tr>
+      <p><strong>Provided summary: </strong>{{ book.summary }}</p>
+    </tr>
+    <tr>
+      <p>{{book.isbn}}</p>
+    </tr>
+
+
   {% endfor %}
+</table>
 {% endblock %}
