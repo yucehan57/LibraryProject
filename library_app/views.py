@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from django.views import generic
+from . import models
 
-# Create your views here.
+class HomeView(generic.TemplateView):
+    template_name = 'library_app/index.html'
+
+
+class BookListView(generic.ListView):
+    model = models.Book
