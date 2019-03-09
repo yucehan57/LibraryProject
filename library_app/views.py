@@ -8,3 +8,8 @@ class HomeView(generic.TemplateView):
 
 class BookListView(generic.ListView):
     model = models.Book
+
+
+class AuthorListView(generic.ListView):
+    model = models.Author
+    
