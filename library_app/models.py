@@ -24,6 +24,9 @@ class Book(models.Model):
     isbn = models.CharField('ISBN', max_length=13,
     help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>',
     null=True, blank=True)
+    cover_photo = models.ImageField(
+            upload_to='library_app/images/book_covers',
+            null=True, blank=True, verbose_name='Book Cover', default=None)
 
     # genre field is going to be a ManyToManyField because a book may
     # cover many genres, and likewise a genre may be covered by many books
@@ -44,7 +47,7 @@ class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4,
         help_text='Unique ID for this particular book across the library')
     book = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
-    imprint = models.CharField(max_length=200)
+    imprint = models.CharField(max_length=200, help_text='Publisher name')
     due_back = models.DateField(null=True, blank=True)
 
     LOAN_STATUS = (
@@ -71,6 +74,9 @@ class Author(models.Model):
     last_name = models.CharField(max_length=75)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField(verbose_name='Died', null=True, blank=True)
+    bio = models.TextField(max_length=750, verbose_name='Author Biography',
+                            help_text='Biography', default=None, null=True,
+                            blank=True)
 
 
     def __str__(self):

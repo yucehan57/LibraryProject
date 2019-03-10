@@ -2,16 +2,20 @@
 
 {% block content %}
   {% for book in book_list %}
-  <table>
-    <tr>
+
+
       <p><a href="{% url 'book-detail' book.pk %}"> {{book.title}}</a> by <strong>{{book.author}}</strong></p>
-    </tr>
-    <tr>
+      {% if book.summary %}
       <p><strong>Provided summary: </strong>{{ book.summary }}</p>
-    </tr>
-    <tr>
-      <p>{{book.isbn}}</p>
-    </tr>
+      {% endif %}
+      {% if book.isbn %}
+        <p>ISBN: {{book.isbn}}</p>
+      {% endif %}
+
+
+
+
+  <hr>
 
 
   {% endfor %}

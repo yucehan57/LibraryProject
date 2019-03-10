@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {{author.last_name}}, {{author.first_name}} books:
+  {{author.last_name}}, {{author.first_name}}
+  <br>
+  Born {{author.date_of_birth}}, Died {{author.date_of_death}}
+  <br>
+  <br>
+  <p>{{author.bio}}</p>
+
   {% for book in book_list %}
-      {{author.book.title}}
+      {# ADD ALL THE BOOKS FROM THE SAME AUTHOR #}
+      {{book.author}}
   {% endfor %}
 
 {% endblock %}

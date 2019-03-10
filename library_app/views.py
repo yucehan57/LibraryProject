@@ -21,9 +21,19 @@ class AuthorListView(generic.ListView):
 class BookDetailView(generic.DetailView):
     model = models.Book
 
+    # def query_set(self):
+
 
 class AuthorDetailView(generic.DetailView):
     model = models.Author
+
+    def query_set(self):
+        """Get all the books of the author"""
+        all_books = Book.objects.all()
+        author_books = all_books.objects.filter(author=self.author_first_name)
+        return author_books
+
+
 
 
 def email_view(request):
