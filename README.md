@@ -15,7 +15,7 @@ Clone the repo, create virtual environment:
 
     $ git clone https://github.com/yucehan57/libraryproject.git
     $ virtualenv env
-    $ source/env/bin/activate:
+    $ source/env/bin/activate
     
 Environment is set up. To proceed, you begin by making necessary migrations:
 
