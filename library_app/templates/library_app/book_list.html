@@ -4,7 +4,7 @@
   {% for book in book_list %}
   <table>
     <tr>
-      <p>{{book.title}} by <strong>{{book.author}}</strong> </p>
+      <p><a href="{% url 'book-detail' book.pk %}"> {{book.title}}</a> by <strong>{{book.author}}</strong></p>
     </tr>
     <tr>
       <p><strong>Provided summary: </strong>{{ book.summary }}</p>

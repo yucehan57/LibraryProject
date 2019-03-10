@@ -34,9 +34,9 @@ class Book(models.Model):
         """String representation of the Model object"""
         return self.title
 
-    # def get_absolute_url(self):
-    #     """Returns the url to access a detailed record for the book"""
-    #     return reverse()
+    def get_absolute_url(self):
+        """Returns the url to access a detailed record for the book"""
+        return reverse('book-detail', args=[str(self.id)])
 
 
 class BookInstance(models.Model):
@@ -79,5 +79,6 @@ class Author(models.Model):
     class Meta:
         ordering = ['last_name', 'first_name']
 
-    # def get_absolute_url(self):
-    #     """url access to the detailed author page"""
+    def get_absolute_url(self):
+        """url access to the detailed author page"""
+        return reverse('author-detail', args=[str(self.id)])

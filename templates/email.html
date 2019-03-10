@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+<h5>Contact us</h5>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div>
+    <button type="submit">Send</button>
+  </div>
+</form>

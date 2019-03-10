@@ -3,6 +3,8 @@
 {% block content %}
 <h2>Authors:</h2><br>
   {% for author in author_list %}
-    <p><strong>{{author.last_name}}, {{author.first_name}}</strong> </p>
+    <p><strong><a href="{% url 'author-detail' author.pk %}">
+      {{author.last_name}}, {{author.first_name}} </a> 
+    </strong> </p>
   {% endfor %}
 {% endblock %}

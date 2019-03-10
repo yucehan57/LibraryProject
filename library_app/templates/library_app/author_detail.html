@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {{author.last_name}}, {{author.first_name}} books:
+  {% for book in book_list %}
+      {{author.book.title}}
+  {% endfor %}
+
+{% endblock %}
