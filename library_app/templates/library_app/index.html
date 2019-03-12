@@ -1,5 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-  Home page
+
+<div class="landingPage">
+
+  <h5>Welcome to the Library Project</h5>
+  <p>Landing page will be created here.</p>
+  <hr>
+  <h6 id="purposeHeader">The purpose of this project</h6>
+  <p id='newsletterForm'>maybe add newsletter subscription email form here?</p>
+  <hr>
+  <div class="contentStatus">
+
+    <div id='contentStatus2'>
+      <h6>Our library consists of</h6><br>
+      <p>Total number of books: {{num_books}}</p>
+      <p>Total number of books instances: {{num_instances}}</p>
+      <p>Total number of authors: {{num_authors}}</p>
+    </div>
+
+  </div>
+
+</div>
+
+
 {% endblock %}

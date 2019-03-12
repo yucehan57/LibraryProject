@@ -24,9 +24,9 @@ class Book(models.Model):
     isbn = models.CharField('ISBN', max_length=13,
     help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>',
     null=True, blank=True)
-    cover_photo = models.ImageField(
-            upload_to='library_app/images/book_covers',
-            null=True, blank=True, verbose_name='Book Cover', default=None)
+    # cover_photo = models.ImageField(
+    #         upload_to='library_app/images/book_covers',
+    #         null=True, blank=True, verbose_name='Book Cover', default=None)
 
     # genre field is going to be a ManyToManyField because a book may
     # cover many genres, and likewise a genre may be covered by many books
@@ -36,6 +36,14 @@ class Book(models.Model):
     def __str__(self):
         """String representation of the Model object"""
         return self.title
+
+    def display_genre(self):
+        """Create a string for the genre. This is required to display
+        genre in Admin"""
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+
+    #Define a cleaner description for /admin
+    display_genre.short_description = 'Genre'
 
     def get_absolute_url(self):
         """Returns the url to access a detailed record for the book"""

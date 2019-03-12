@@ -1,3 +1,18 @@
-.table {
-  border: solid black 2px;
+.landingPage {
+  margin-top: 10%;
+  text-align: center;
+}
+
+#purposeHeader {
+  font-style: oblique;
+}
+
+#newsletterForm {
+  font-size: 1.5em;
+  font-style: italic;
+  font-family: fantasy;
+}
+
+#addBookForm {
+  margin-top: 10%;
 }

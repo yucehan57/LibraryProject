@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h6 align-text="center">Register a new Author</h6>
+</div>
+
+<form id="addAuthorForm" action="{% url 'add-author' %}" method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" name="" value="Register">
+</form>
+
+{% endblock %}

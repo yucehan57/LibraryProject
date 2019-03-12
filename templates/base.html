@@ -11,7 +11,7 @@
     {# FONTS #}
 
     {# MASTER CSS #}
-    <link rel="stylesheet" href="{% static 'LibraryProject/css/master.css' %}">
+    <link rel="stylesheet" href="{% static 'library_app/css/master.css' %}">
 
   </head>
   <body>
@@ -32,7 +32,13 @@
             <a class="nav-link" href="{% url 'author-list' %}">Authors</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'email' %} ">Contact</a>
+            <a class="nav-link" href="{% url 'add-book' %}">Add a New Book</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'add-author' %}">Register New Author</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'contact-form' %} ">Contact</a>
           </li>
         </ul>
 
@@ -50,7 +56,7 @@
     {% endblock %}
   </div>
   </body>
-  <script type="text/javascript" src="{% static 'LibraryProject/js/master.js' %}">
+  <script type="text/javascript" src="{% static 'library_app/js/master.js' %}">
 
   </script>
 </html>
