@@ -94,10 +94,4 @@ class ContactView(FormView):
 
 def success_view(request):
     """View for sending a successful email"""
-    return HttpResponse('Success! Thank you for your message')
-
-def success_book_added_view(request):
-    """view for adding a book successfully"""
-    return HttpResponse('Book successfully added.')
-    #
-    # FINISH FUNCTIONALITY
+    return HttpResponse('Success! Thank you for your message. We will get back to you in 48 hours')

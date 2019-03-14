@@ -129,3 +129,5 @@ STATIC_ROOT = '/'
 
 # MEDIA_URL = '/static/library_app/images/'
 # MEDIA_URL = '/media/'
+
+LOGIN_URL = '/'
