@@ -17,29 +17,53 @@
   <body>
     {# NAVIGATION BAR #}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="nav-link" href="{% url 'index' %}">
+      <a class="nav-link" href="{% url 'library_app:index' %}">
         <img src="/static/library_app/brand_logo/logo.png" height="30">
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'library_app:index' %}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'book-list' %}">Catalog</a>
+            <a class="nav-link" href="{% url 'library_app:book-list' %}">Catalog</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'author-list' %}">Authors</a>
+            <a class="nav-link" href="{% url 'library_app:author-list' %}">Authors</a>
+          </li>
+
+          {% if user.is_authenticated %}
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'library_app:add-book' %}">Add a New Book</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'add-book' %}">Add a New Book</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'add-author' %}">Register New Author</a>
+            <a class="nav-link" href="{% url 'library_app:add-author' %}">Register New Author</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'contact-form' %} ">Contact</a>
           </li>
+
+          {% endif %}
+
+          <!-- ACCOUNTS BAR LOGIN LOGOUT SIGNUP PROFILE -->
+          {% if user.is_authenticated %}
+
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'accounts:profile' %}">{{user.username}}'s Profile</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'accounts:logout' %}">Log out</a>
+          </li>
+          {% else %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          </li>
+          
+          {% endif %}
         </ul>
 
 

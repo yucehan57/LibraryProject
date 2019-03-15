@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'library_app'
+
 urlpatterns = [
     path('', views.HomeView.as_view(), name='index'),
     path('catalog/', views.BookListView.as_view(), name='book-list'),
@@ -11,6 +13,7 @@ urlpatterns = [
                                                         name='author-detail'),
     path('catalog/addbook', views.AddBookView.as_view(), name='add-book'),
     path('authors/addauthor', views.AddAuthorView.as_view(), name='add-author'),
+    
 
 
 ]

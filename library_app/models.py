@@ -47,7 +47,7 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a detailed record for the book"""
-        return reverse('book-detail', args=[str(self.id)])
+        return reverse('library_app:book-detail', args=[str(self.id)])
 
 
 class BookInstance(models.Model):
@@ -83,7 +83,7 @@ class Author(models.Model):
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField(verbose_name='Died', null=True, blank=True)
     bio = models.TextField(max_length=750, verbose_name='Author Biography',
-                            help_text='Biography', default=None, null=True,
+                            default=None, null=True,
                             blank=True)
 
 
@@ -95,4 +95,4 @@ class Author(models.Model):
 
     def get_absolute_url(self):
         """url access to the detailed author page"""
-        return reverse('author-detail', args=[str(self.id)])
+        return reverse('library_app:author-detail', args=[str(self.id)])

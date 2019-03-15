@@ -16,3 +16,24 @@
 #addBookForm {
   margin-top: 10%;
 }
+
+#authorRegisterForm {
+  text-align: center;
+  font-size: 30px;
+  font-style: oblique;
+  margin-top: auto;
+}
+
+#bookRegisterForm {
+  text-align: center;
+  font-style: oblique;
+  margin-top: auto;
+  font-size: 1.5em;
+}
+
+#contactUsForm {
+  text-align: center;
+  font-style: oblique;
+  margin-top: auto;
+  font-size: 1.5em;
+}

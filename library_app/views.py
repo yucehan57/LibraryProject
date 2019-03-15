@@ -50,6 +50,7 @@ class AddBookView(LoginRequiredMixin, generic.CreateView):
 
     model = models.Book
     fields = ('title', 'author', 'summary', 'isbn', 'genre')
+    success_url = reverse_lazy('library_app:book-list')
 
 
 

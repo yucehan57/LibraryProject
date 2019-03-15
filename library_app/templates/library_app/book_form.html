@@ -1,13 +1,13 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
-<div id="addBookForm">
 
 {% block content %}
-<br><br><br>
-  <form class="" action="{% url 'add-book' %}" method="post">
+<h6 id='bookRegisterForm'>Register new book</h6>
+  <form action="{% url 'library_app:add-book' %}" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" name="" value="Add">
+    {{form|crispy}}
+    <input type="submit" class="btn btn-primary" value="Add Book">
   </form>
 {% endblock %}
 
