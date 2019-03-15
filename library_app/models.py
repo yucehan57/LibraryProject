@@ -33,6 +33,7 @@ class Book(models.Model):
     genre = models.ManyToManyField(Genre,
                                    help_text='Select a genre for this book')
 
+
     def __str__(self):
         """String representation of the Model object"""
         return self.title

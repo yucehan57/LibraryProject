@@ -1,15 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div id='updateAuthorForm'>
+  <h6 id = 'updateAuthorFormHeader'>{{author.last_name}}, {{author.first_name}}</h6>
   {{author.last_name}}, {{author.first_name}}
-  <br>
+
   {% if author.date_of_birth %}
     Born {{author.date_of_birth}}
-  , Died {{author.date_of_death}}
+    Died {{author.date_of_death}}
   {% endif %}
-  <br>
-  <br>
+
+  {% if author.bio %}
   <p>{{author.bio}}</p>
+</div>
+
+  {% else %}
+  <p><strong>No summary is provided for this author</strong></p>
+  {% endif %}
+    <div class="authorDetailButtons">
+
+    <button id='updateAuthorButton' type="button" class="btn btn-warning">
+      <a href="{% url 'library_app:edit-author' author.pk %}">Edit Author Information</a>
+
+    </button>
+    <button id='goBackAuthorButton' type="button" class="btn btn-success">
+      <a href="{% url 'library_app:author-list' %}">Go Back</a>
+    </button>
+  </div>
 
 
 

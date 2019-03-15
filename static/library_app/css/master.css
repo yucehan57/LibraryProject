@@ -37,3 +37,41 @@
   margin-top: auto;
   font-size: 1.5em;
 }
+
+#updateAuthorForm {
+  font-style: oblique;
+  margin-top: 5%;
+  font-size: 18px;
+  text-align: center;
+
+}
+
+#updateAuthorForm #updateAuthorFormHeader {
+  font-size: 30px;
+}
+
+.authorDetailButtons {
+  margin-top: 10%;
+  text-align: center;
+}
+
+.authorDetailButtons #updateAuthorButton {
+  margin-right: 5%;
+}
+
+.authorDetailButtons #goBackAuthorButton {
+  margin-left: 5%;
+}
+
+.authorUpdateForm {
+  text-align: center;
+  font-size: 24px;
+  font-style: oblique;
+  font-weight: bold;
+  margin-top: 7%;
+}
+
+.contentStatus {
+  font-size: 20px;
+  font-style: oblique;
+}

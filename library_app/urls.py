@@ -4,16 +4,25 @@ from . import views
 app_name = 'library_app'
 
 urlpatterns = [
-    path('', views.HomeView.as_view(), name='index'),
-    path('catalog/', views.BookListView.as_view(), name='book-list'),
+    path('', views.HomeView.as_view(),              name='index'),
+
+    path('catalog/', views.BookListView.as_view(),  name='book-list'),
+
     path('catalog/<int:pk>', views.BookDetailView.as_view(),
-                                                        name='book-detail'),
-    path('authors', views.AuthorListView.as_view(), name='author-list'),
+                                                    name='book-detail'),
+
+    path('authors/', views.AuthorListView.as_view(), name='author-list'),
+
     path('authors/<int:pk>', views.AuthorDetailView.as_view(),
-                                                        name='author-detail'),
-    path('catalog/addbook', views.AddBookView.as_view(), name='add-book'),
-    path('authors/addauthor', views.AddAuthorView.as_view(), name='add-author'),
-    
+                                                    name='author-detail'),
+    path('catalog/addbook', views.AddBookView.as_view(),
+                                                    name='add-book'),
+    path('authors/addauthor', views.AddAuthorView.as_view(),
+                                                    name='add-author'),
+    path('authors/<int:pk>/editauthor', views.UpdateAuthorView.as_view(),
+                                                    name='edit-author'),
+    # path()
+
 
 
 ]

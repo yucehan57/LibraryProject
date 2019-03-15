@@ -19,9 +19,21 @@
       <p>Total number of authors: {{num_authors}}</p>
     </div>
 
-  </div>
+
+  <p>Some books in history category are:</p>
+
+  {% for bk in historical_books %}
+
+  <li>
+    {% if forloop.last %}
+
+    {% endif %}
+    <a href="{% url 'library_app:book-detail' bk.pk %}">{{bk.title}}</a>
+  </li>
+
+  {% endfor %}
 
 </div>
-
+</div>
 
 {% endblock %}

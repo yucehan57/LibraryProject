@@ -18,12 +18,19 @@ class HomeView(generic.TemplateView):
         context['num_books'] = models.Book.objects.all().count()
         context['num_instances'] = models.BookInstance.objects.all().count()
         context['num_authors'] = models.Author.objects.all().count()
+        context['historical_books'] = models.Book.objects.filter(genre__name__icontains='historical')[:5]
         return context
+
+
+
 
 
 
 class BookListView(generic.ListView):
     model = models.Book
+
+
+
 
 
 class AuthorListView(generic.ListView):
@@ -57,6 +64,12 @@ class AddBookView(LoginRequiredMixin, generic.CreateView):
 class AddAuthorView(LoginRequiredMixin, generic.CreateView):
     model = models.Author
     fields = ('first_name', 'last_name', 'date_of_birth', 'date_of_death', 'bio')
+
+
+class UpdateAuthorView(LoginRequiredMixin, generic.UpdateView):
+    model = models.Author
+    fields = ('bio',)
+    template_name_suffix = '_update_form'
 
 
 

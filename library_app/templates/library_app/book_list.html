@@ -3,7 +3,7 @@
 {% block content %}
   {% for book in book_list %}
 
-
+      
       <p><a href="{% url 'library_app:book-detail' book.pk %}"> {{book.title}}</a> by <strong>{{book.author}}</strong></p>
       {% if book.summary %}
       <p><strong>Provided summary: </strong>{{ book.summary }}</p>
