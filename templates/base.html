@@ -50,7 +50,7 @@
           <!-- ACCOUNTS BAR LOGIN LOGOUT SIGNUP PROFILE -->
           {% if user.is_authenticated %}
 
-          <li class="nav-item active">
+          <li class="nav-item active" id='navbarProfile'>
             <a class="nav-link" href="{% url 'accounts:profile' %}">{{user.username}}'s Profile</a>
           </li>
           <li class="nav-item active">

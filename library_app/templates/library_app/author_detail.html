@@ -4,11 +4,15 @@
 
 <div id='updateAuthorForm'>
   <h6 id = 'updateAuthorFormHeader'>{{author.last_name}}, {{author.first_name}}</h6>
-  {{author.last_name}}, {{author.first_name}}
 
-  {% if author.date_of_birth %}
-    Born {{author.date_of_birth}}
-    Died {{author.date_of_death}}
+
+  {% if author.date_of_birth and author.date_of_death %}
+    <p>Born {{author.date_of_birth}}</p>
+    <p>Died {{author.date_of_death}}</p>
+  {% elif author.date_of_birth %}
+      <p>Born {{author.date_of_birth}}, Alive</p>
+  {% else %}
+      <p></p>
   {% endif %}
 
   {% if author.bio %}
@@ -19,6 +23,10 @@
   <p><strong>No summary is provided for this author</strong></p>
   {% endif %}
     <div class="authorDetailButtons">
+      <h6>Author's books:</h6>
+      {% for book in author_books %}
+        <p>{{book}}</p>        
+      {% endfor %}
 
     <button id='updateAuthorButton' type="button" class="btn btn-warning">
       <a href="{% url 'library_app:edit-author' author.pk %}">Edit Author Information</a>

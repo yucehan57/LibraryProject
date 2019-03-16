@@ -18,39 +18,28 @@ class HomeView(generic.TemplateView):
         context['num_books'] = models.Book.objects.all().count()
         context['num_instances'] = models.BookInstance.objects.all().count()
         context['num_authors'] = models.Author.objects.all().count()
-        context['historical_books'] = models.Book.objects.filter(genre__name__icontains='historical')[:5]
+        context['historical_books'] = models.Book.objects.filter(
+                                    genre__name__icontains='historical')[:5]
         return context
-
-
-
-
 
 
 class BookListView(generic.ListView):
     model = models.Book
 
 
-
-
-
 class AuthorListView(generic.ListView):
     model = models.Author
+
+    def get_queryset(self):
+        return models.Author.objects.order_by('last_name')
 
 
 class BookDetailView(generic.DetailView):
     model = models.Book
 
-    # def query_set(self):
-
 
 class AuthorDetailView(generic.DetailView):
     model = models.Author
-
-    def query_set(self):
-        """Get all the books of the author"""
-        all_books = Book.objects.all()
-        author_books = all_books.objects.filter(author=self.author_first_name)
-        return author_books
 
 
 class AddBookView(LoginRequiredMixin, generic.CreateView):
@@ -58,7 +47,6 @@ class AddBookView(LoginRequiredMixin, generic.CreateView):
     model = models.Book
     fields = ('title', 'author', 'summary', 'isbn', 'genre')
     success_url = reverse_lazy('library_app:book-list')
-
 
 
 class AddAuthorView(LoginRequiredMixin, generic.CreateView):
@@ -71,6 +59,9 @@ class UpdateAuthorView(LoginRequiredMixin, generic.UpdateView):
     fields = ('bio',)
     template_name_suffix = '_update_form'
 
+
+class GenreListView(generic.ListView):
+    model = models.Genre
 
 
 class ContactView(FormView):
