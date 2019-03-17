@@ -22,6 +22,10 @@
   {% else %}
   <p><strong>No summary is provided for this author</strong></p>
   {% endif %}
+
+  {% for bk in author_books %}
+    {{bk.title}}
+  {% endfor %}
     <div class="authorDetailButtons">
       <button id='updateAuthorButton' type="button" class="btn btn-warning">
       <a href="{% url 'library_app:edit-author' author.pk %}">Edit Author Information</a>
