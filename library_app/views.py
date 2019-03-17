@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from . import models
@@ -7,6 +7,7 @@ from django.core.mail import send_mail, BadHeaderError
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormView
+
 
 
 class HomeView(generic.TemplateView):
@@ -45,10 +46,17 @@ class AuthorDetailView(generic.DetailView):
     # def get_context_data(self, **kwargs):
     #     # Call the base implementation first to get a context
     #     context = super().get_context_data(**kwargs)
-    #     # Add in a QuerySet of author's books
-    #     from .models import Book
-    #     context['author_books'] = Book.objects.filter(author__first_name=self.author__first_name)
-    #     return context
+    #     """DONT FORGET TO REMOVE"""
+        # # Assign object in my view
+        # # self.object = self.get_object()
+        # # Add in a QuerySet of author's books
+        # # context['author_books'] = models.Book.objects.get(author_id=str(self.id)) #author = self.author
+        # # context['authors_books'] = models.Book.objects.filter(author__first_name=self.first_name)
+        # self.author = get_object_or_404(models.Author, id=self.kwargs['id'])
+        # # context['author_books'] = models.Book.objects.filter(author=self.author)
+        # return models.Book.objects.filter(models.author=self.author)
+        # return context
+
 
 class AddBookView(LoginRequiredMixin, generic.CreateView):
 
