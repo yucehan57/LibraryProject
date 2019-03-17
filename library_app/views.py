@@ -27,6 +27,7 @@ class BookListView(generic.ListView):
     model = models.Book
 
 
+
 class AuthorListView(generic.ListView):
     model = models.Author
 
@@ -41,6 +42,13 @@ class BookDetailView(generic.DetailView):
 class AuthorDetailView(generic.DetailView):
     model = models.Author
 
+    # def get_context_data(self, **kwargs):
+    #     # Call the base implementation first to get a context
+    #     context = super().get_context_data(**kwargs)
+    #     # Add in a QuerySet of author's books
+    #     from .models import Book
+    #     context['author_books'] = Book.objects.filter(author__first_name=self.author__first_name)
+    #     return context
 
 class AddBookView(LoginRequiredMixin, generic.CreateView):
 
