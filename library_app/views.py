@@ -33,6 +33,7 @@ class AuthorListView(generic.ListView):
     model = models.Author
 
     def get_queryset(self):
+        """List authors by their lastname order"""
         return models.Author.objects.order_by('last_name')
 
 
@@ -44,18 +45,12 @@ class AuthorDetailView(generic.DetailView):
     model = models.Author
 
     # def get_context_data(self, **kwargs):
-    #     # Call the base implementation first to get a context
+    #     """Display books from the same author"""
     #     context = super().get_context_data(**kwargs)
-    #     """DONT FORGET TO REMOVE"""
-        # # Assign object in my view
-        # # self.object = self.get_object()
-        # # Add in a QuerySet of author's books
-        # # context['author_books'] = models.Book.objects.get(author_id=str(self.id)) #author = self.author
-        # # context['authors_books'] = models.Book.objects.filter(author__first_name=self.first_name)
-        # self.author = get_object_or_404(models.Author, id=self.kwargs['id'])
-        # # context['author_books'] = models.Book.objects.filter(author=self.author)
-        # return models.Book.objects.filter(models.author=self.author)
-        # return context
+    #     from .models import Book
+    #     context['author_books'] = Book.objects.filter(author_id=self.id)
+    #     return context
+
 
 
 class AddBookView(LoginRequiredMixin, generic.CreateView):
