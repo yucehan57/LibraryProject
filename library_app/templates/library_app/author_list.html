@@ -8,7 +8,7 @@
   <ul>
     {% for author in author_list %}
     <li>
-      <p><strong><a href="{% url 'library_app:author-detail' author.pk %}">
+      <p><strong><a href="{% url 'library_app:author-detail' author.id %}">
         {{author.last_name}}, {{author.first_name}} </a>
         </strong> </p>
     {% endfor %}

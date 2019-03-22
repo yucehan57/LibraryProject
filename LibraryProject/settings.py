@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'library_app',
     'accounts',
     'crispy_forms',
+    'blog'
 ]
 
 MIDDLEWARE = [
