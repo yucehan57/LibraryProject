@@ -23,12 +23,12 @@
   <p><strong>No summary is provided for this author</strong></p>
   {% endif %}
     <div class="authorDetailButtons">
-      <button id='updateAuthorButton' type="button" class="btn btn-warning">
+      <button id='updateAuthorButton' type="button" class="btn btn-secondary">
       <a href="{% url 'library_app:edit-author' author.pk %}">Edit Author Information</a>
       </button>
 
-      <button id='goBackAuthorButton' type="button" class="btn btn-success">
-      <a href="{% url 'library_app:author-list' %}">Go Back</a>
+      <button id='goBackAuthorButton' type="button" class="btn btn-secondary">
+      <a href="{% url 'library_app:author-list' %}">See All Authors</a>
       </button>
     </div>
 

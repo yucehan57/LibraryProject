@@ -3,7 +3,7 @@
 
 {% block content %}
 <h6 id='authorRegisterForm'>Register new author</h6>
-<form id="addAuthorForm" action="{% url 'library_app:add-author' %}" method="post">
+<form id="addAuthorForm" method="post">
   {% csrf_token %}
   {{form|crispy}}
   <input type="submit" class='btn btn-primary' value="Register">
