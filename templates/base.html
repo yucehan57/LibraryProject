@@ -50,41 +50,66 @@
 
           {% endif %}
 
+
+
           <!-- ACCOUNTS BAR LOGIN LOGOUT SIGNUP PROFILE -->
           {% if user.is_authenticated %}
 
-          <li class="nav-item active" id='navbarProfile'>
-            <a class="nav-link" href="{% url 'accounts:profile' %}">{{user.username}}'s Profile</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'accounts:logout' %}">Log out</a>
-          </li>
-          {% else %}
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-          </li>
+            <li class="nav-item" id='navbarProfile'>
+              <a class="nav-link" href="{% url 'accounts:profile' %}">{{user.username}}'s Profile</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'accounts:logout' %}">Log out</a>
+            </li>
+            {% else %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+            </li>
 
           {% endif %}
         </ul>
 
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='searchInput'>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
+
 </nav>
 
+
+
   <div class="container">
+
     {% block content %}
       {# ALL THE CONTENT GOES HERE #}
     {% endblock %}
+
+    {% block pagination %}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+  {% endblock %} 
   </div>
+
   </body>
   <script type="text/javascript" src="{% static 'library_app/js/master.js' %}">
-
   </script>
+
 </html>

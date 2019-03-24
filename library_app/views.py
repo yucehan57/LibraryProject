@@ -26,11 +26,13 @@ class HomeView(generic.TemplateView):
 
 class BookListView(generic.ListView):
     model = models.Book
+    paginate_by = 10
 
 
 
 class AuthorListView(generic.ListView):
     model = models.Author
+    paginate_by = 10
 
     def get_queryset(self):
         """List authors by their lastname order"""
@@ -43,7 +45,7 @@ class BookDetailView(generic.DetailView):
 
 class AuthorDetailView(generic.DetailView):
     model = models.Author
-
+    
     # def get_context_data(self, **kwargs):
     #     """Display books from the same author"""
     #     context = super().get_context_data(**kwargs)

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h6 style="text-align: center;">Blog Page</h6><hr>
+
+  {% for post in blog_posts %}
+
+  <div class="postContent">
+
+    <ul>
+   <p><strong><a href="{% url 'blog:blog-detail' post.pk %}">{{post.title}}</a></strong>,
+    created: {{post.date_created}}</p><hr>
+    </ul>
+
+  </div>
+
+  {% endfor %}
+
+{% endblock %}
