@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <hr>
+
+  <strong>{{post.title}}</strong>,<hr> <em>Post created: {{post.date_created}}</em><hr>
+  {{post.content}}<hr>
+
+  <button type="button" class='btn btn-warning'>
+    <a href="{% url 'blog:blog-update' post.pk %}">Edit Post</a>
+  </button>
+{% endblock %}

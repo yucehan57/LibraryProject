@@ -1,7 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from accounts.models import User
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 class Category(models.Model):
     """Represent a category for a blog post"""
@@ -17,6 +19,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    author = models.ForeignKey(User)
     title = models.CharField(max_length=255, blank=False, null=False)
     content = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
@@ -29,10 +32,11 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         """url access to the detailed post page"""
-        return reverse('blog:post-detail', args=[str(self.id)])
+        return reverse('blog:blog-detail', args=[str(self.id)])
 
     class Meta:
         ordering = ['-date_created']
+        unique_together = ['user', 'message']
 
 
 class Tag(models.Model):
