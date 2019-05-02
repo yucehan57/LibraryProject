@@ -19,7 +19,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, blank=False, null=False)
     content = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
@@ -36,7 +36,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-date_created']
-        unique_together = ['user', 'message']
+
 
 
 class Tag(models.Model):
@@ -56,7 +56,8 @@ class Comment(models.Model):
     #     date_commented = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-date_commented']
+        ordering = ['-date_commented',]
+        unique_together = ['user',]
 
     def __str__(self):
         return f'{self.post} by {self.user}'
